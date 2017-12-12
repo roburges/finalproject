@@ -2,19 +2,24 @@ import requests
 
 
 from nytimesarticle import articleAPI
-api=articleAPI('87c4d119d268416dabca815fb87cdbbb')
+response=requests.get('https://nytimes.com',auth=('87c4d119d268416dabca815fb87cdbbb'))
+print(response.contents)
+# CACHE_FNAME = "response.json"
+# cache_file=open(CACHE_FNAME,'r')
+# cache_contents=cache_file.read()
+# CACHE_DICTION=json.loads(cache_contents)
+# cache_file.close()
 
-articleS=api.search(q='AAPL', fq={'source':['Reuters','AP','The New York Times']},begin_date=20160101)
-fix=articleS + urllib.parse.urlencode({'address'})
-CACHE_FNAME = "NYT.json"
+
+
 # Put the rest of your caching setup here:
 try:
-    cache_file = open(CACHE_FNAME, 'r') # Try to read the data from the file
-    cache_contents = cache_file.read()  # If it's there, get it into a string
-    CACHE_DICTION = json.loads(cache_contents) # And then load it into a dictionary
-    cache_file.close() # Close the file, we're good, we got the data in a dictionary.
-except:
-    CACHE_DICTION = {}
+    # cache_file = open(CACHE_FNAME, 'r') # Try to read the data from the file
+#     cache_contents = cache_file.read()  # If it's there, get it into a string
+#     CACHE_DICTION = json.loads(cache_contents) # And then load it into a dictionary
+#     cache_file.close() # Close the file, we're good, we got the data in a dictionary.
+# except:
+#     CACHE_DICTION = {}
 # Define your function get_user_tweets here:
 
 # def get_user_tweets(tweets):
